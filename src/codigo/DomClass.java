@@ -157,7 +157,7 @@ public class DomClass {
           
         }
     
-    //Para modificar crear un array temporal y guardar todos los datos, cambiando el que nos interesa y sobre-escribiendo el archivo.
+    //Método para cambiar el valor de un nodo texto ya existente.
     
     public void modificaTitulo(Document doc, String entrada, String nuevoTitulo){
          String datos_nodo[]=null;
@@ -186,20 +186,17 @@ public class DomClass {
                    if(ntemp.getNodeType()==Node.ELEMENT_NODE){
                       datos[contador]=ntemp.getChildNodes().item(0).getNodeValue();
                       contador++;
-  
+                     //Hacemos la comprobación. Si se corresponde el dato introducido con un título, se hace el cambio.
                       if(datos[i].equals(entrada)){       
                           ntemp.setTextContent(nuevoTitulo);
-                      }
-                      
+                      }                    
                      
                        
                    }
                   
-                }
-             
+                }      
              
              }
-
     }
     
     
