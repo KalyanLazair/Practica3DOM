@@ -153,6 +153,11 @@ public class VentanaPractica extends javax.swing.JFrame {
         });
 
         jButton6.setText("SAX");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton6MousePressed(evt);
+            }
+        });
 
         jMenu1.setText("File");
 
@@ -305,6 +310,12 @@ public class VentanaPractica extends javax.swing.JFrame {
           jLabel1.setText("No se ha podido obtener el documento SAX.");
         }
     }//GEN-LAST:event_jMenuItem2MousePressed
+
+    private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
+        String texto=gesSax.recorrerSax(gesSax.ficheroXML, gesSax.sh, gesSax.parser);
+        
+        jTextArea1.setText(texto);
+    }//GEN-LAST:event_jButton6MousePressed
 
     /**
      * @param args the command line arguments

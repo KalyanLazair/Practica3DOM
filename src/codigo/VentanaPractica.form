@@ -231,6 +231,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="SAX"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton6MousePressed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
