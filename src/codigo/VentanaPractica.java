@@ -23,9 +23,10 @@ public class VentanaPractica extends javax.swing.JFrame {
     
     public VentanaPractica() {
         initComponents();
+        jTextArea1.setEditable(false);
     }
 
-    
+    //Método que nos permite abrir un jFileChooser para abrir un archivo.
     private File dialogoSeleccion(){
       File fichero=null;
       int rv;
@@ -213,11 +214,10 @@ public class VentanaPractica extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
+                                .addGap(92, 92, 92)
                                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1)
                                 .addGap(18, 18, 18)
@@ -235,8 +235,8 @@ public class VentanaPractica extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)))))
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(18, 18, 18)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -246,8 +246,8 @@ public class VentanaPractica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
@@ -279,6 +279,7 @@ public class VentanaPractica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        //Obtenemos el archivo xml.
         File fichero=dialogoSeleccion();
         int gestorDom=gesDom.abrirDOM(fichero);
         
@@ -287,15 +288,23 @@ public class VentanaPractica extends javax.swing.JFrame {
         }else if(gestorDom==-1){
           jLabel1.setText("No se ha podido obtener el árbol DOM.");
         }
+        //Desabilita los botones que no correspondan.
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(true);
+        jButton5.setEnabled(true);
+        jButton6.setEnabled(false);
+        jButton7.setEnabled(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        //Escribimos el texto sobre el textArea.
         String texto=gesDom.recorrerDom(gesDom.doc);
         
-        jTextArea1.append(texto);
+        jTextArea1.setText(texto);
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+        //Añadimos valores nuevos a un archivo xml ya existente.
         Document documento=gesDom.doc;
         String titulo=jTextField1.getText();
         String autor=jTextField2.getText();
@@ -313,6 +322,7 @@ public class VentanaPractica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MousePressed
 
     private void jButton5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MousePressed
+        //Nos permite modificar el valor de un título.
         String entrada=jTextField6.getText();
         String salida=jTextField4.getText();
         Document documento=gesDom.doc;
@@ -321,6 +331,7 @@ public class VentanaPractica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MousePressed
 
     private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
+        //Obtenemos el archivo xml a través de SAX.
         File fichero=dialogoSeleccion();
         int gestorSax=gesSax.abrirSax(fichero);
         
@@ -328,17 +339,24 @@ public class VentanaPractica extends javax.swing.JFrame {
           jLabel1.setText("Se ha obtenido el documento SAX.");
         }else if(gestorSax==-1){
           jLabel1.setText("No se ha podido obtener el documento SAX.");
-        }
+        }    
+        //Desabilita los botones que no correspondan.
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton5.setEnabled(false);
+        jButton6.setEnabled(true);
+        jButton7.setEnabled(false);
     }//GEN-LAST:event_jMenuItem2MousePressed
 
     private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
+        //Mostramos el contenido del archivo en el textArea.
         String texto=gesSax.recorrerSax(gesSax.ficheroXML, gesSax.sh, gesSax.parser);
         
         jTextArea1.setText(texto);
     }//GEN-LAST:event_jButton6MousePressed
 
     private void jButton7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MousePressed
-        //Recorrer JAXB
+        //Recorrer JAXB. Nos muestra el contenido en el textArea.
         String texto=gesJax.recorrerJAXB();
         
         jTextArea1.setText(texto);
@@ -355,8 +373,12 @@ public class VentanaPractica extends javax.swing.JFrame {
         }else if(gestorJax==-1){
           jLabel1.setText("No se ha podido obtener el documento JAXB.");
         }
-        
-        
+        //Desabilita los botones que no correspondan.
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton5.setEnabled(false);
+        jButton6.setEnabled(false);
+        jButton7.setEnabled(true);     
     }//GEN-LAST:event_jMenuItem3MousePressed
 
     /**

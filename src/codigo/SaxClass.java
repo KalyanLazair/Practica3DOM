@@ -49,7 +49,7 @@ public class SaxClass {
             public ManejadorSAX(){
                 ultimoElemento=0;
             }
-            
+            //Hacemos el override de Start y establecemos lo que va a hacer el programa cuando encuentre estos elementos.
             @Override public void startElement(String uri, String localName, String qName, Attributes atts)throws SAXException{
                 if(qName.equals("libro")){
                     cadena_resultado= cadena_resultado + "\nPublicado en;" + atts.getValue(atts.getQName(0))+ "\n"; 
@@ -89,7 +89,7 @@ public class SaxClass {
             }           
 
      }
-    
+    //Recorremos el SAX.
     public String recorrerSax(File fXML, ManejadorSAX sh, SAXParser parser){
         try{
             parser.parse(fXML,sh);

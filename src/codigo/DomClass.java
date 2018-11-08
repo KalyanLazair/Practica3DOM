@@ -59,9 +59,9 @@ public class DomClass {
             
             for(int i=0; i<nodelist.getLength();i++){
                    node=nodelist.item(i);
-                   
+                   //Comprobamos los nodos guardados en la lista de nodos, en caso de que sea de tipo elemento, ejecuta.
                    if(node.getNodeType()==Node.ELEMENT_NODE){
-                      
+                      //Llamamos al método procesar libro. Guardamos el contenido en el array.
                        datos_nodo=procesarLibro(node);
                        
                        salida=salida+"\n"+"Pubicado en;" + datos_nodo[0];
@@ -79,15 +79,15 @@ public class DomClass {
         String datos[]= new String[3]; //Declaramos un array con tres posiciones para guardar los datos de los nodos hijo, que son tres.
         Node ntemp=null;
         int contador=1;
-        
+        //Obtenemos el primer valor y lo guardamos en el array.
         datos[0]=n.getAttributes().item(0).getNodeValue();
-        NodeList nodos=n.getChildNodes();
+        NodeList nodos=n.getChildNodes(); //Creamos la lista para guardar los nodos texto de cada nodo elemento.
         
         for(int i=0; i<nodos.getLength(); i++){
-            ntemp=nodos.item(i);
+            ntemp=nodos.item(i); //asignamos valor del elemento en posición i.
             
             if(ntemp.getNodeType()==Node.ELEMENT_NODE){
-                 datos[contador]=ntemp.getChildNodes().item(0).getNodeValue();
+                 datos[contador]=ntemp.getChildNodes().item(0).getNodeValue(); //Obtenemos el valor del nodo texto y lo guardamos.
                  contador++;
             }
         }
@@ -180,11 +180,11 @@ public class DomClass {
                 datos[0]=node.getAttributes().item(0).getNodeValue();
                 //Obtenemos los nodos hijos del nodo libro.
                 NodeList nodos=node.getChildNodes();
-                
+                //Recorremos la lista de nodos hijo para obtener su valor del nodo texto.
                 for(int j=0;j<nodos.getLength();j++){
-                   ntemp=nodos.item(i);
+                   ntemp=nodos.item(i); //Asignamos el valor del nodo en posición i y comparamos.Si es un tipo elemento, ejecuta el código.
                    if(ntemp.getNodeType()==Node.ELEMENT_NODE){
-                      datos[contador]=ntemp.getChildNodes().item(0).getNodeValue();
+                      datos[contador]=ntemp.getChildNodes().item(0).getNodeValue(); //Obtenemos los valores del nodo texto.
                       contador++;
                      //Hacemos la comprobación. Si se corresponde el dato introducido con un título, se hace el cambio.
                       if(datos[i].equals(entrada)){       

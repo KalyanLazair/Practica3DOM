@@ -39,7 +39,7 @@ public class JaxBClass {
         String cadena_resultado="";
             //Crea una lista con objetos de tipo libro.
         List<Libros.Libro> losLibros=misLibros.getLibro();
-        //Recorre la lista para sacar los valores.
+        //Recorre la lista para sacar los valores. Los valores los obtenemos a partir de la clase Java que ha creado.
         for (int i=0; i<losLibros.size(); i++){
               cadena_resultado = cadena_resultado+"\n" + "Publicado en: " + losLibros.get(i).getPublicadoEn();
               cadena_resultado= cadena_resultado + "\n" +"El Título es: " + losLibros.get(i).getTitulo();
