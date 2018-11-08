@@ -19,7 +19,7 @@ public class VentanaPractica extends javax.swing.JFrame {
 
     DomClass gesDom=new DomClass();
     SaxClass gesSax=new SaxClass();
-    
+    JaxBClass gesJax=new JaxBClass();
     
     public VentanaPractica() {
         initComponents();
@@ -59,7 +59,7 @@ public class VentanaPractica extends javax.swing.JFrame {
 
         if(seleccion==JFileChooser.APPROVE_OPTION){
           //Si llego aquí es que el usuario ha pulsado en guardar cuando ha salido el menú de jFileChooser.
-          //Tenemos la opción de guardar la imagen del buffer sobre un fichero.
+          //Tenemos la opción de guardar el contenido sobre un fichero.
           File fichero= fc.getSelectedFile();
           String nombre= fichero.getName();
           //Necesitamos saber si es un png o un jpg. La extensión, para poder guardarlo y que no de error.
@@ -95,10 +95,12 @@ public class VentanaPractica extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -159,6 +161,13 @@ public class VentanaPractica extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setText("JAXB");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton7MousePressed(evt);
+            }
+        });
+
         jMenu1.setText("File");
 
         jMenuItem1.setText("DOM");
@@ -176,6 +185,14 @@ public class VentanaPractica extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("JAXB");
+        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem3MousePressed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
 
@@ -198,6 +215,8 @@ public class VentanaPractica extends javax.swing.JFrame {
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(44, 44, 44)
                                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1)
@@ -227,6 +246,7 @@ public class VentanaPractica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,6 +337,28 @@ public class VentanaPractica extends javax.swing.JFrame {
         jTextArea1.setText(texto);
     }//GEN-LAST:event_jButton6MousePressed
 
+    private void jButton7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MousePressed
+        //Recorrer JAXB
+        String texto=gesJax.recorrerJAXB();
+        
+        jTextArea1.setText(texto);
+        
+    }//GEN-LAST:event_jButton7MousePressed
+
+    private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MousePressed
+        //Abrir JAXB.
+        File fichero=dialogoSeleccion();
+        int gestorJax=gesJax.abrirJAXB(fichero);
+        
+        if(gestorJax==0){
+          jLabel1.setText("Se ha obtenido el documento JAXB.");
+        }else if(gestorJax==-1){
+          jLabel1.setText("No se ha podido obtener el documento JAXB.");
+        }
+        
+        
+    }//GEN-LAST:event_jMenuItem3MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -359,12 +401,14 @@ public class VentanaPractica extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;

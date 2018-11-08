@@ -52,8 +52,7 @@ public class SaxClass {
             
             @Override public void startElement(String uri, String localName, String qName, Attributes atts)throws SAXException{
                 if(qName.equals("libro")){
-                    aux="Se va a imprimir un libro";
-                    cadena_resultado= cadena_resultado + "\nPublicado en;" + atts.getValue(atts.getQName(0))+ "\n";
+                    cadena_resultado= cadena_resultado + "\nPublicado en;" + atts.getValue(atts.getQName(0))+ "\n"; 
                     ultimoElemento=1;
                 }else if(qName.equals("titulo")){
                     ultimoElemento=2;
@@ -61,6 +60,9 @@ public class SaxClass {
                 }else if(qName.equals("autor")){
                     ultimoElemento=3;
                     cadena_resultado=cadena_resultado + "\nEl autor es;";
+                }else if(qName.equals("libros")){
+                    aux="Se va a imprimir un libro";
+                    cadena_resultado= aux + cadena_resultado;
                 }
             }
             //Cuando se detecta el final de un elemento libro, se pone una linea discontinua en la salida.
@@ -91,7 +93,7 @@ public class SaxClass {
     public String recorrerSax(File fXML, ManejadorSAX sh, SAXParser parser){
         try{
             parser.parse(fXML,sh);
-            return sh.aux + sh.cadena_resultado;
+            return sh.cadena_resultado;
         }catch(SAXException e){
             e.printStackTrace();
             return "error al parsear con SAX";
