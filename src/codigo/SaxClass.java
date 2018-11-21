@@ -17,11 +17,11 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Marta
  */
 public class SaxClass {
-    
+    //Vars de instancia que vamos a utilizar.
     ManejadorSAX sh;
     SAXParser parser;
     File ficheroXML;
-    
+    //Método que abre el archivo con Sax.
     public int abrirSax(File fichero){
        try{
            SAXParserFactory factory= SAXParserFactory.newInstance();

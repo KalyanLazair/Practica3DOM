@@ -33,7 +33,7 @@ public class JaxBClass {
            return -1;
         }
     }
-    
+    //Método que sirve para recorrer el archivo XML que hemos abierto a través de JaxB.
     public String recorrerJAXB(){
         
         String cadena_resultado="";

@@ -291,6 +291,8 @@ public class VentanaPractica extends javax.swing.JFrame {
         //Desabilita los botones que no correspondan.
         jButton1.setEnabled(true);
         jButton2.setEnabled(true);
+        jButton3.setEnabled(true);
+        jButton4.setEnabled(true);
         jButton5.setEnabled(true);
         jButton6.setEnabled(false);
         jButton7.setEnabled(false);
@@ -327,7 +329,7 @@ public class VentanaPractica extends javax.swing.JFrame {
         String salida=jTextField4.getText();
         Document documento=gesDom.doc;
         
-        gesDom.modificaTitulo(documento,entrada,salida);
+        gesDom.modificaTitulo(entrada,salida);
     }//GEN-LAST:event_jButton5MousePressed
 
     private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
@@ -343,6 +345,8 @@ public class VentanaPractica extends javax.swing.JFrame {
         //Desabilita los botones que no correspondan.
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton4.setEnabled(false);
         jButton5.setEnabled(false);
         jButton6.setEnabled(true);
         jButton7.setEnabled(false);
@@ -376,6 +380,8 @@ public class VentanaPractica extends javax.swing.JFrame {
         //Desabilita los botones que no correspondan.
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton4.setEnabled(false);
         jButton5.setEnabled(false);
         jButton6.setEnabled(false);
         jButton7.setEnabled(true);     

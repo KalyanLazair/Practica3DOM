@@ -159,8 +159,8 @@ public class DomClass {
     
     //Método para cambiar el valor de un nodo texto ya existente.
     
-    public void modificaTitulo(Document doc, String entrada, String nuevoTitulo){
-         String datos_nodo[]=null;
+    public void modificaTitulo(String entrada, String nuevoTitulo){
+  
          Node node;
 
          //Obtenemos la raíz.
@@ -173,24 +173,28 @@ public class DomClass {
              node=lista.item(i);
              
              if(node.getNodeType()==Node.ELEMENT_NODE){
-                String[] datos=new String[3];
+                String datos="";
                 Node ntemp=null;
-                int contador=1;
+                
                 //Valor del primer atributo del nodo.
-                datos[0]=node.getAttributes().item(0).getNodeValue();
+                //datos[0]=node.getAttributes().item(0).getNodeValue();
                 //Obtenemos los nodos hijos del nodo libro.
                 NodeList nodos=node.getChildNodes();
                 //Recorremos la lista de nodos hijo para obtener su valor del nodo texto.
                 for(int j=0;j<nodos.getLength();j++){
-                   ntemp=nodos.item(i); //Asignamos el valor del nodo en posición i y comparamos.Si es un tipo elemento, ejecuta el código.
-                   if(ntemp.getNodeType()==Node.ELEMENT_NODE){
-                      datos[contador]=ntemp.getChildNodes().item(0).getNodeValue(); //Obtenemos los valores del nodo texto.
-                      contador++;
-                     //Hacemos la comprobación. Si se corresponde el dato introducido con un título, se hace el cambio.
-                      if(datos[i].equals(entrada)){       
-                          ntemp.setTextContent(nuevoTitulo);
-                      }                    
+                   ntemp=nodos.item(j); //Asignamos el valor del nodo en posición j y comparamos.Si es un tipo elemento, ejecuta el código.
+                   if(ntemp.getNodeType()==Node.ELEMENT_NODE && ntemp.getNodeName()=="titulo"){
+ 
                      
+                      datos=ntemp.getChildNodes().item(0).getNodeValue(); //Obtenemos los valores del nodo texto.
+                      
+                       
+                     //Hacemos la comprobación. Si se corresponde el dato introducido con un título, se hace el cambio.
+                      if(datos.equals(entrada)){ 
+                          System.out.println(datos);
+                          ntemp.setTextContent(nuevoTitulo);
+                           
+                      }       
                        
                    }
                   

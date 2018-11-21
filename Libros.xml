@@ -1,0 +1,22 @@
+<Libros xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="LibrosEsquema.xsd">
+	<Libro publicado_en="1840">
+		<Titulo>El capote</Titulo>
+		<Autor>Nikolai Gogol</Autor>
+		<Editorial>Planeta</Editorial>
+	</Libro>
+	<Libro publicado_en="2008">
+		<Titulo>El sanador de caballos</Titulo>
+		<Autor>Gonzalo Giner</Autor>
+		<Editorial>Penguin</Editorial>
+	</Libro>
+	<Libro publicado_en="1981">
+		<Titulo>El nombre de la rosa</Titulo>
+		<Autor>Uberto Eco</Autor>
+		<Editorial>Ediciones B</Editorial>
+	</Libro>
+	<Libro publicado_en="2010">
+      <Titulo>El Camino de los Reyes</Titulo>
+      <Autor>Brandon Sanderson</Autor>
+	  <Editorial>Tor Books</Editorial>
+    </Libro>
+</Libros>
